@@ -61,7 +61,7 @@ while(not week):
         res2 = getPosts(df.iloc[-1].fullname)
         for post in res2.json()['data']['children']:
             if(post['data']['is_original_content']):
-                df = df._append({
+                df = df.append({
                     'fullname': 't3_'+post['data']['id'],
                     'title': post['data']['title'],
                     'author': post['data']['author'],

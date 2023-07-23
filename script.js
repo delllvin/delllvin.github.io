@@ -5,14 +5,12 @@ const posts = [
     {
         title: "Post 1",
         tags: ["tag1", "tag2"],
-        image: "https://via.placeholder.com/300",
-        content: "Content of Post 1"
+        image: "https://via.placeholder.com/96x72"
     },
     {
         title: "Post 2",
         tags: ["tag1", "tag3"],
-        image: "https://via.placeholder.com/300",
-        content: "Content of Post 2"
+        image: "https://via.placeholder.com/96x72"
     },
     // Add more posts as needed
 ];
@@ -43,12 +41,8 @@ function displayPosts() {
         tagsElement.classList.add("post-tags");
         tagsElement.textContent = "Tags: " + post.tags.join(", ");
 
-        const contentTextElement = document.createElement("p");
-        contentTextElement.textContent = post.content;
-
         titleElement.appendChild(tagsElement);
         contentElement.appendChild(titleElement);
-        contentElement.appendChild(contentTextElement);
 
         postElement.appendChild(imageElement);
         postElement.appendChild(contentElement);

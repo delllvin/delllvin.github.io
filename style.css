@@ -4,6 +4,8 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #1A1A1B;
+    color: #FFFFFF;
 }
 
 .header {
@@ -18,14 +20,14 @@ body {
 }
 
 .post {
-    border: 1px solid #ccc;
+    border: 1px solid #272729;
     border-radius: 5px;
     margin-bottom: 20px;
     padding: 10px;
-    background-color: #fff;
-    height: 95px; /* Updated height for the post */
+    background-color: #272729;
+    height: 85px; /* Updated height for the post */
     display: flex;
-    align-items: center;
+    align-items: flex-start; /* Align title to the top of the image */
 }
 
 .post img {
@@ -44,12 +46,12 @@ body {
     font-size: 18px;
     margin: 0;
     margin-bottom: 5px;
-    color: #0079d3;
+    color: #FFFFFF;
 }
 
 .post-tags {
     font-size: 14px;
-    color: #555;
+    color: #BEBEBE;
 }
 
 /* Optional: Style links to look like Reddit links */

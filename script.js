@@ -3,7 +3,7 @@
 // Function to fetch data from the API
 async function fetchData() {
     try {
-      const response = await fetch("http://127.0.0.1:5000/get_posts");
+      const response = await fetch("https://test-reddit-posts-api.onrender.com/get_posts");
       const data = await response.json();
       return data;
     } catch (error) {

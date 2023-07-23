@@ -51,7 +51,7 @@ for post in res.json()['data']['children']:
             'author': post['data']['author'],
             'date': datetime.fromtimestamp(int(post['data']['created_utc'])),
             'timestamp': int(post['data']['created_utc']),
-            'preview': post['data']['preview']['images'][0]['source']['url']
+            'preview': post['data']['thumbnail']
         }, ignore_index=True)
 
 while(not week):
@@ -67,7 +67,7 @@ while(not week):
                     'author': post['data']['author'],
                     'date': datetime.fromtimestamp(int(post['data']['created_utc'])),
                     'timestamp': int(post['data']['created_utc']),
-                    'preview': post['data']['preview']['images'][0]['source']['url']
+                    'preview': post['data']['thumbnail']
                 }, ignore_index=True)
 
 df = df[df.timestamp > 1689537600]

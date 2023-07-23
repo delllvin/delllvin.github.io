@@ -1,55 +1,59 @@
 // script.js
 
-// Sample array of posts (you can replace this with data from the server)
-const posts = [
-    {
-        title: "Os franceses sem entender nada",
-        tags: ["u/MaykaLynn"],
-        image: "https://b.thumbs.redditmedia.com/Co-Q4IGslz_bPN5qZXf_bnar58bktguqngwVzkjx4zw.jpg"
-    },
-    {
-        title: "sai do fake Barnabé",
-        tags: ["u/lunetainvisivel"],
-        image: "https://a.thumbs.redditmedia.com/molP8TGZIlseCz1zvGBWWEnm1OVYj-DEzPeUGLmTQr8.jpg"
-    },
-    // Add more posts as needed
-];
-
-// Function to display posts
-function displayPosts() {
+// Function to fetch data from the API
+async function fetchData() {
+    try {
+      const response = await fetch("http://127.0.0.1:5000/get_posts");
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      return [];
+    }
+  }
+  
+  // Function to display posts
+  async function displayPosts() {
     const postListElement = document.getElementById("post-list");
-
-    // Clear the previous content of the post list
-    postListElement.innerHTML = "";
-
-    // Loop through each post and create the post elements
-    posts.forEach(post => {
+  
+    try {
+      const posts = await fetchData();
+  
+      // Clear the previous content of the post list
+      postListElement.innerHTML = "";
+  
+      // Loop through each post and create the post elements
+      posts.forEach(post => {
         const postElement = document.createElement("div");
         postElement.classList.add("post");
-
+  
         const imageElement = document.createElement("img");
-        imageElement.src = post.image;
+        imageElement.src = post.preview;
         imageElement.alt = post.title;
-
+  
         const contentElement = document.createElement("div");
         contentElement.classList.add("post-content");
-
+  
         const titleElement = document.createElement("h2");
         titleElement.innerHTML = `<a href="#">${post.title}</a>`;
-
+  
         const userElement = document.createElement("p");
         userElement.classList.add("post-user");
-        userElement.textContent = "Postado por: " + post.username;
-
+        userElement.textContent = "Posted by: " + post.author;
+  
         titleElement.appendChild(userElement);
         contentElement.appendChild(titleElement);
-
+  
         postElement.appendChild(imageElement);
         postElement.appendChild(contentElement);
-
+  
         postListElement.appendChild(postElement);
-    });
-}
-
-// Call the displayPosts function when the page loads
-window.addEventListener("load", displayPosts);
+      });
+    } catch (error) {
+      console.error("Error displaying posts:", error);
+    }
+  }
+  
+  // Call the displayPosts function when the page loads
+  window.addEventListener("load", displayPosts);
+  

@@ -46,7 +46,7 @@ posts = res.json()['data']['children']
 for post in res.json()['data']['children']:
     if(post['data']['is_original_content']):
         if((post['data']['is_video'] and post['data']['secure_media']['reddit_video']['is_gif']) or (not post['data']['is_video'])):
-            df = df._append({
+            df = df.append({
                 'fullname': 't3_'+post['data']['id'],
                 'title': post['data']['title'],
                 'author': post['data']['author'],
@@ -55,7 +55,7 @@ for post in res.json()['data']['children']:
                 'preview': post['data']['thumbnail']
             }, ignore_index=True)
         else:
-            df = df._append({
+            df = df.append({
                 'fullname': 't3_'+post['data']['id'],
                 'title': post['data']['title'],
                 'author': post['data']['author'],
@@ -72,7 +72,7 @@ while(not week):
         for post in res2.json()['data']['children']:
             if(post['data']['is_original_content']):
                 if((post['data']['is_video'] and post['data']['secure_media']['reddit_video']['is_gif']) or (not post['data']['is_video'])):
-                    df = df._append({
+                    df = df.append({
                         'fullname': 't3_'+post['data']['id'],
                         'title': post['data']['title'],
                         'author': post['data']['author'],
@@ -81,7 +81,7 @@ while(not week):
                         'preview': post['data']['thumbnail']
                     }, ignore_index=True)
                 else:
-                    df = df._append({
+                    df = df.append({
                         'fullname': 't3_'+post['data']['id'],
                         'title': post['data']['title'],
                         'author': post['data']['author'],

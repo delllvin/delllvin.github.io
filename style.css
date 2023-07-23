@@ -1,0 +1,63 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: #0079d3;
+    color: #fff;
+    padding: 10px;
+}
+
+.post-list {
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.post {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.post h2 {
+    font-size: 24px;
+    margin: 0;
+    margin-bottom: 10px;
+    color: #0079d3;
+}
+
+.post p {
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.post img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.post-tags {
+    font-size: 14px;
+    color: #555;
+}
+
+.post-content {
+    font-size: 16px;
+}
+
+/* Optional: Style links to look like Reddit links */
+a {
+    color: #0079d3;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

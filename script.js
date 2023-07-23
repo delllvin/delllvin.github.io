@@ -37,11 +37,11 @@ function displayPosts() {
         const titleElement = document.createElement("h2");
         titleElement.innerHTML = `<a href="#">${post.title}</a>`;
 
-        const tagsElement = document.createElement("p");
-        tagsElement.classList.add("post-tags");
-        tagsElement.textContent = "Usuario: " + post.tags.join(", ");
+        const userElement = document.createElement("p");
+        userElement.classList.add("post-user");
+        userElement.textContent = "Postado por: " + post.username;
 
-        titleElement.appendChild(tagsElement);
+        titleElement.appendChild(userElement);
         contentElement.appendChild(titleElement);
 
         postElement.appendChild(imageElement);

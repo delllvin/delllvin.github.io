@@ -1,7 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reddit-like Page</title>
+    <style>
+        /* Add your custom styles here */
+    </style>
+</head>
 <body>
-<h1>Pingola</h1>
-<p>testando o GitHub Pages.</p>
+    <h1>Welcome to Reddit-like Page</h1>
+
+    <div id="post-list">
+        <!-- Posts will be dynamically added here using JavaScript -->
+    </div>
+
+    <script>
+        // Sample array of posts (you can replace this with data from the server)
+        const posts = [
+            {
+                title: "Post 1",
+                tags: ["tag1", "tag2"],
+                image: "path/to/image1.jpg",
+                content: "Content of Post 1"
+            },
+            {
+                title: "Post 2",
+                tags: ["tag1", "tag3"],
+                image: "path/to/image2.jpg",
+                content: "Content of Post 2"
+            },
+            // Add more posts as needed
+        ];
+    
+        // Function to display posts
+        function displayPosts() {
+            const postListElement = document.getElementById("post-list");
+    
+            // Clear the previous content of the post list
+            postListElement.innerHTML = "";
+    
+            // Loop through each post and create the post elements
+            posts.forEach(post => {
+                const postElement = document.createElement("div");
+                postElement.classList.add("post");
+    
+                const titleElement = document.createElement("h2");
+                titleElement.textContent = post.title;
+    
+                const tagsElement = document.createElement("p");
+                tagsElement.textContent = "Tags: " + post.tags.join(", ");
+    
+                const imageElement = document.createElement("img");
+                imageElement.src = post.image;
+                imageElement.alt = post.title;
+    
+                const contentElement = document.createElement("p");
+                contentElement.textContent = post.content;
+    
+                postElement.appendChild(titleElement);
+                postElement.appendChild(tagsElement);
+                postElement.appendChild(imageElement);
+                postElement.appendChild(contentElement);
+    
+                postListElement.appendChild(postElement);
+            });
+        }
+    
+        // Call the displayPosts function when the page loads
+        window.addEventListener("load", displayPosts);
+    </script>
+    
 </body>
 </html>

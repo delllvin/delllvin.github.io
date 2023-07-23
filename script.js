@@ -3,14 +3,14 @@
 // Sample array of posts (you can replace this with data from the server)
 const posts = [
     {
-        title: "Post 1",
-        tags: ["tag1", "tag2"],
-        image: "https://via.placeholder.com/96x72"
+        title: "Os franceses sem entender nada",
+        tags: ["u/MaykaLynn"],
+        image: "https://b.thumbs.redditmedia.com/Co-Q4IGslz_bPN5qZXf_bnar58bktguqngwVzkjx4zw.jpg"
     },
     {
-        title: "Post 2",
-        tags: ["tag1", "tag3"],
-        image: "https://via.placeholder.com/96x72"
+        title: "sai do fake Barnabé",
+        tags: ["u/lunetainvisivel"],
+        image: "https://a.thumbs.redditmedia.com/molP8TGZIlseCz1zvGBWWEnm1OVYj-DEzPeUGLmTQr8.jpg"
     },
     // Add more posts as needed
 ];
@@ -39,7 +39,7 @@ function displayPosts() {
 
         const tagsElement = document.createElement("p");
         tagsElement.classList.add("post-tags");
-        tagsElement.textContent = "Tags: " + post.tags.join(", ");
+        tagsElement.textContent = "Usuario: " + post.tags.join(", ");
 
         titleElement.appendChild(tagsElement);
         contentElement.appendChild(titleElement);

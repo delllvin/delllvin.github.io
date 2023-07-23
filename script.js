@@ -26,10 +26,20 @@ async function fetchData() {
       posts.forEach(post => {
         const postElement = document.createElement("div");
         postElement.classList.add("post");
-  
-        const imageElement = document.createElement("img");
-        imageElement.src = post.preview;
-        imageElement.alt = post.title;
+
+        if (post.preview.endsWith('.mp4') || post.preview.endsWith('.ogg') || post.preview.endsWith('.webm')) {
+            // If the preview is a video
+            const videoElement = document.createElement('video');
+            videoElement.src = post.preview;
+            videoElement.controls = true;
+            postElement.appendChild(videoElement);
+          } else {
+            // If the preview is an image
+            const previewImage = document.createElement('img');
+            previewImage.src = post.preview;
+            previewImage.alt = post.title;
+            postElement.appendChild(previewImage);
+          }
   
         const contentElement = document.createElement("div");
         contentElement.classList.add("post-content");
@@ -44,7 +54,6 @@ async function fetchData() {
         titleElement.appendChild(userElement);
         contentElement.appendChild(titleElement);
   
-        postElement.appendChild(imageElement);
         postElement.appendChild(contentElement);
   
         postListElement.appendChild(postElement);

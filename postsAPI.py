@@ -45,14 +45,24 @@ posts = res.json()['data']['children']
 
 for post in res.json()['data']['children']:
     if(post['data']['is_original_content']):
-        df = df.append({
-            'fullname': 't3_'+post['data']['id'],
-            'title': post['data']['title'],
-            'author': post['data']['author'],
-            'date': datetime.fromtimestamp(int(post['data']['created_utc'])),
-            'timestamp': int(post['data']['created_utc']),
-            'preview': post['data']['thumbnail']
-        }, ignore_index=True)
+        if((post['data']['is_video'] and post['data']['secure_media']['reddit_video']['is_gif']) or (not post['data']['is_video'])):
+            df = df._append({
+                'fullname': 't3_'+post['data']['id'],
+                'title': post['data']['title'],
+                'author': post['data']['author'],
+                'date': datetime.fromtimestamp(int(post['data']['created_utc'])),
+                'timestamp': int(post['data']['created_utc']),
+                'preview': post['data']['thumbnail']
+            }, ignore_index=True)
+        else:
+            df = df._append({
+                'fullname': 't3_'+post['data']['id'],
+                'title': post['data']['title'],
+                'author': post['data']['author'],
+                'date': datetime.fromtimestamp(int(post['data']['created_utc'])),
+                'timestamp': int(post['data']['created_utc']),
+                'preview': post['data']['secure_media']['reddit_video']['scrubber_media_url']
+            }, ignore_index=True)
 
 while(not week):
     if int(df.iloc[-1].timestamp < (datetime.timestamp(datetime.now()) - 604800)):
@@ -61,14 +71,24 @@ while(not week):
         res2 = getPosts(df.iloc[-1].fullname)
         for post in res2.json()['data']['children']:
             if(post['data']['is_original_content']):
-                df = df.append({
-                    'fullname': 't3_'+post['data']['id'],
-                    'title': post['data']['title'],
-                    'author': post['data']['author'],
-                    'date': datetime.fromtimestamp(int(post['data']['created_utc'])),
-                    'timestamp': int(post['data']['created_utc']),
-                    'preview': post['data']['thumbnail']
-                }, ignore_index=True)
+                if((post['data']['is_video'] and post['data']['secure_media']['reddit_video']['is_gif']) or (not post['data']['is_video'])):
+                    df = df._append({
+                        'fullname': 't3_'+post['data']['id'],
+                        'title': post['data']['title'],
+                        'author': post['data']['author'],
+                        'date': datetime.fromtimestamp(int(post['data']['created_utc'])),
+                        'timestamp': int(post['data']['created_utc']),
+                        'preview': post['data']['thumbnail']
+                    }, ignore_index=True)
+                else:
+                    df = df._append({
+                        'fullname': 't3_'+post['data']['id'],
+                        'title': post['data']['title'],
+                        'author': post['data']['author'],
+                        'date': datetime.fromtimestamp(int(post['data']['created_utc'])),
+                        'timestamp': int(post['data']['created_utc']),
+                        'preview': post['data']['secure_media']['reddit_video']['scrubber_media_url']
+                    }, ignore_index=True)
 
 df = df[df.timestamp > 1689537600]
 

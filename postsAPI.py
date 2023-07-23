@@ -103,6 +103,10 @@ with open('data.json', 'r') as f:
 app = Flask(__name__)
 CORS(app)
 
+@app.route('/')
+def hello_world():
+    return 'Hello, Wordl!'
+
 @app.route('/get_posts')
 def get_posts():
     return jsonify(postsJson)

@@ -45,7 +45,7 @@ posts = res.json()['data']['children']
 
 for post in res.json()['data']['children']:
     if(post['data']['is_original_content']):
-        df = df._append({
+        df = df.append({
             'fullname': 't3_'+post['data']['id'],
             'title': post['data']['title'],
             'author': post['data']['author'],

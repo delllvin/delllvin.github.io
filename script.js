@@ -29,6 +29,13 @@ function displayPosts() {
         const postElement = document.createElement("div");
         postElement.classList.add("post");
 
+        const imageElement = document.createElement("img");
+        imageElement.src = post.image;
+        imageElement.alt = post.title;
+
+        const contentElement = document.createElement("div");
+        contentElement.classList.add("post-content");
+
         const titleElement = document.createElement("h2");
         titleElement.innerHTML = `<a href="#">${post.title}</a>`;
 
@@ -36,16 +43,13 @@ function displayPosts() {
         tagsElement.classList.add("post-tags");
         tagsElement.textContent = "Tags: " + post.tags.join(", ");
 
-        const imageElement = document.createElement("img");
-        imageElement.src = post.image;
-        imageElement.alt = post.title;
+        const contentTextElement = document.createElement("p");
+        contentTextElement.textContent = post.content;
 
-        const contentElement = document.createElement("p");
-        contentElement.classList.add("post-content");
-        contentElement.textContent = post.content;
+        titleElement.appendChild(tagsElement);
+        contentElement.appendChild(titleElement);
+        contentElement.appendChild(contentTextElement);
 
-        postElement.appendChild(titleElement);
-        postElement.appendChild(tagsElement);
         postElement.appendChild(imageElement);
         postElement.appendChild(contentElement);
 

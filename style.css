@@ -13,7 +13,7 @@ body {
 }
 
 .post-list {
-    max-width: 800px;
+    max-width: 900px; /* Updated width for the post */
     margin: 20px auto;
 }
 
@@ -23,33 +23,32 @@ body {
     margin-bottom: 20px;
     padding: 10px;
     background-color: #fff;
-}
-
-.post h2 {
-    font-size: 24px;
-    margin: 0;
-    margin-bottom: 10px;
-    color: #0079d3;
-}
-
-.post p {
-    margin: 0;
-    margin-bottom: 5px;
+    height: 95px; /* Updated height for the post */
+    display: flex;
+    align-items: center;
 }
 
 .post img {
-    max-width: 100%;
+    max-width: 150px; /* Updated width for the image */
     height: auto;
     border-radius: 5px;
+    margin-right: 10px; /* Add some space between image and content */
+}
+
+.post-content {
+    flex: 1; /* To make the content take the remaining space */
+}
+
+.post h2 {
+    font-size: 18px;
+    margin: 0;
+    margin-bottom: 5px;
+    color: #0079d3;
 }
 
 .post-tags {
     font-size: 14px;
     color: #555;
-}
-
-.post-content {
-    font-size: 16px;
 }
 
 /* Optional: Style links to look like Reddit links */

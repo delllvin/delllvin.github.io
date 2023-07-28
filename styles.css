@@ -1,0 +1,108 @@
+/* Apply dark mode styles to the body and main content area */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #1A1A1A; /* Dark background color */
+    color: #FFFFFF; /* White text color */
+  }
+  
+  header {
+    background-color: #FF4500; /* Reddit's orange color */
+    color: #FFFFFF;
+    padding: 10px;
+  }
+  
+  main {
+    padding: 20px 350px;
+  }
+  
+  /* Style post containers in dark mode */
+  .post {
+    border: 1px solid #555555; /* Darker border color */
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #2F2F2F; /* Darker background color */
+  }
+  
+  .post-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #FFFFFF; /* White text color */
+  }
+  
+  .post-body {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .post-details {
+    font-size: 14px;
+    color: #AAAAAA; /* Lighter text color */
+  }
+  
+  /* Style comments in dark mode */
+  .comment {
+    border-left: 2px solid #FF4500; /* Reddit's orange color */
+    padding-left: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .comment-body {
+    font-size: 14px;
+    color: #DDDDDD; /* Lighter text color */
+  }
+  
+  /* Apply dark mode styles to the footer */
+  footer {
+    background-color: #333333; /* Darker footer background color */
+    padding: 10px;
+    text-align: center;
+    color: #CCCCCC; /* Lighter text color */
+  }
+  
+  /* Apply dark mode styles to links */
+  a {
+    color: #FFA500; /* Lighter orange color for links */
+  }
+  
+  a:hover {
+    text-decoration: underline;
+    color: #FFD700; /* Lighter gold color for links on hover */
+  }
+  
+  /* Apply dark mode styles to the body and main content area (same as before) */
+
+/* Add styles for thumbnails and post content */
+.post {
+    display: flex;
+    border: 1px solid #555555; /* Darker border color */
+    margin-bottom: 20px;
+    background-color: #2F2F2F; /* Darker background color */
+  }
+  
+  .thumbnail {
+    width: 100px; /* Adjust the width of the thumbnail as needed */
+    height: 100px; /* Adjust the height of the thumbnail as needed */
+    margin: 10px;
+    background-color: #444444; /* Darker color for the thumbnail area */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .thumbnail img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
+  .post-content {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  /* Rest of the styles (same as before) */
+  

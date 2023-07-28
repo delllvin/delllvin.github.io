@@ -1,68 +1,51 @@
-// script.js
+const apiURL = 'https://test-reddit-posts-api.onrender.com/get_posts';
+const postsContainer = document.getElementById('posts-container');
 
-// Function to fetch data from the API
-async function fetchData() {
-    try {
-      const response = await fetch("https://test-reddit-posts-api.onrender.com/get_posts");
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error("Error fetching data:", error);
-      return [];
-    }
+async function fetchPosts() {
+  try {
+    const response = await fetch(apiURL);
+    const data = await response.json();
+    displayPosts(data);
+  } catch (error) {
+    console.error('Error fetching posts:', error);
   }
-  
-  // Function to display posts
-  async function displayPosts() {
-    const postListElement = document.getElementById("post-list");
-  
-    try {
-      const posts = await fetchData();
-  
-      // Clear the previous content of the post list
-      postListElement.innerHTML = "";
-  
-      // Loop through each post and create the post elements
-      posts.forEach(post => {
-        const postElement = document.createElement("div");
-        postElement.classList.add("post");
+}
 
-        if (post.preview.endsWith('.mp4') || post.preview.endsWith('.ogg') || post.preview.endsWith('.webm')) {
-            // If the preview is a video
-            const videoElement = document.createElement('video');
-            videoElement.src = post.preview;
-            videoElement.controls = true;
-            postElement.appendChild(videoElement);
-          } else {
-            // If the preview is an image
-            const previewImage = document.createElement('img');
-            previewImage.src = post.preview;
-            previewImage.alt = post.title;
-            postElement.appendChild(previewImage);
-          }
-  
-        const contentElement = document.createElement("div");
-        contentElement.classList.add("post-content");
-  
-        const titleElement = document.createElement("h2");
-        titleElement.innerHTML = `<a href="#">${post.title}</a>`;
-  
-        const userElement = document.createElement("p");
-        userElement.classList.add("post-user");
-        userElement.textContent = "Posted by: " + post.author;
-  
-        titleElement.appendChild(userElement);
-        contentElement.appendChild(titleElement);
-  
-        postElement.appendChild(contentElement);
-  
-        postListElement.appendChild(postElement);
-      });
-    } catch (error) {
-      console.error("Error displaying posts:", error);
-    }
-  }
-  
-  // Call the displayPosts function when the page loads
-  window.addEventListener("load", displayPosts);
-  
+function displayPosts(posts) {
+  posts.forEach(post => {
+    const postElement = createPostElement(post);
+    postsContainer.appendChild(postElement);
+  });
+}
+
+function createPostElement(post) {
+  const postElement = document.createElement('div');
+  postElement.classList.add('post');
+
+  const previewElement = document.createElement('div');
+  previewElement.classList.add('preview');
+  previewElement.innerHTML = `<img src="${post.preview}" alt="Preview">`;
+  postElement.appendChild(previewElement);
+
+  const postContentElement = document.createElement('div');
+  postContentElement.classList.add('post-content');
+  const titleElement = document.createElement('h2');
+  titleElement.classList.add('post-title');
+  titleElement.textContent = post.title;
+  postContentElement.appendChild(titleElement);
+
+  const bodyElement = document.createElement('p');
+  bodyElement.classList.add('post-body');
+  bodyElement.textContent = post.body;
+  postContentElement.appendChild(bodyElement);
+
+  const detailsElement = document.createElement('p');
+  detailsElement.classList.add('post-details');
+  detailsElement.textContent = `Posted by ${post.author} | ${post.time_ago} | ${post.comments_count} comments | ${post.upvotes} upvotes`;
+  postContentElement.appendChild(detailsElement);
+
+  postElement.appendChild(postContentElement);
+  return postElement;
+}
+
+fetchPosts();

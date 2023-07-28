@@ -1,13 +1,26 @@
 const apiURL = 'https://test-reddit-posts-api.onrender.com/get_posts';
+const versionURL = 'https://test-reddit-posts-api.onrender.com/version';
 const postsContainer = document.getElementById('posts-container');
+const footer = document.querySelector('footer');
 
 async function fetchPosts() {
   try {
     const response = await fetch(apiURL);
     const data = await response.json();
-    displayPosts(data);
+    displayPosts(data.posts);
+    fetchAppVersion(); // Fetch app version after fetching posts
   } catch (error) {
     console.error('Error fetching posts:', error);
+  }
+}
+
+async function fetchAppVersion() {
+  try {
+    const response = await fetch(versionURL);
+    const data = await response.json();
+    displayAppVersion(data.version);
+  } catch (error) {
+    console.error('Error fetching app version:', error);
   }
 }
 
@@ -46,6 +59,12 @@ function createPostElement(post) {
 
   postElement.appendChild(postContentElement);
   return postElement;
+}
+
+function displayAppVersion(version) {
+  const versionElement = document.createElement('p');
+  versionElement.textContent = `App Version: ${version}`;
+  footer.appendChild(versionElement);
 }
 
 fetchPosts();

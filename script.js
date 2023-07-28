@@ -7,7 +7,7 @@ async function fetchPosts() {
   try {
     const response = await fetch(apiURL);
     const data = await response.json();
-    displayPosts(data.posts);
+    displayPosts(data);
     fetchAppVersion(); // Fetch app version after fetching posts
   } catch (error) {
     console.error('Error fetching posts:', error);
@@ -18,7 +18,7 @@ async function fetchAppVersion() {
   try {
     const response = await fetch(versionURL);
     const data = await response.json();
-    displayAppVersion(data.version);
+    displayAppVersion(data);
   } catch (error) {
     console.error('Error fetching app version:', error);
   }

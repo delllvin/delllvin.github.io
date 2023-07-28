@@ -119,7 +119,7 @@ def get_posts():
     return postsJson
 
 @app.route('/version')
-def hello_world():
+def display_version():
     return '0.1'
 
 if __name__ == '__main__':

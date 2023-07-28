@@ -11,6 +11,8 @@ import csv
 import json
 import os
 
+# Read the credentials from the environmental variables
+
 CLIENT_ID = os.getenv('CLIENT_ID')
 SECRET_KEY = os.getenv('SECRET_KEY')
 USERNAME = os.getenv('username')
@@ -115,6 +117,10 @@ def hello_world():
 @app.route('/get_posts')
 def get_posts():
     return postsJson
+
+@app.route('/version')
+def hello_world():
+    return '0.1'
 
 if __name__ == '__main__':
     app.run(debug=True)

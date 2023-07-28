@@ -48,13 +48,9 @@ function createPostElement(post) {
   const titleElement = document.createElement('a');
   titleElement.classList.add('post-title');
   titleElement.textContent = post.title;
-  titleElement.href = post.url;
+  titleElement.href = post.link;
+  titleElement.target = '_blank';
   postContentElement.appendChild(titleElement);
-
-  const bodyElement = document.createElement('p');
-  bodyElement.classList.add('post-body');
-  bodyElement.textContent = post.body;
-  postContentElement.appendChild(bodyElement);
 
   const detailsElement = document.createElement('p');
   detailsElement.classList.add('post-details');

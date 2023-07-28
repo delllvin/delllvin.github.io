@@ -55,7 +55,7 @@ for post in res.json()['data']['children']:
         }, ignore_index=True)
 
 while(not week):
-    if int(df.iloc[-1].timestamp < (datetime.timestamp(datetime.now()) - 604800)):
+    if int(df.iloc[-1].timestamp < (datetime.timestamp(datetime.now()) - (604800*2))):
         week = True
     else:
         res2 = getPosts(df.iloc[-1].fullname)

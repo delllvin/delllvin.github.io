@@ -50,12 +50,12 @@ res = requests.get('https://oauth.reddit.com/r/cellbits/new', headers=headers, p
 posts = res.json()['data']['children']
 
 for post in res.json()['data']['children']:
-    if(post['data']['is_original_content']):
+    if(post['data']['is_original_content'] and post['data']['approved']):
         df = df.append({
             'fullname': 't3_'+post['data']['id'],
             'title': post['data']['title'],
             'author': post['data']['author'],
-            'date': datetime.fromtimestamp(int(post['data']['created_utc'])).date().strftime("%b") + " " + datetime.fromtimestamp(int(post['data']['created_utc'])).date().strftime("%d") + ", 23",
+            'date': datetime.fromtimestamp(int(post['data']['created_utc'])).date().strftime("%d") + " de " + datetime.fromtimestamp(int(post['data']['created_utc'])).date().strftime("%B"),
             'timestamp': int(post['data']['created_utc']),
             'preview': post['data']['thumbnail']
         }, ignore_index=True)
@@ -66,12 +66,12 @@ while(not week):
     else:
         res2 = getPosts(df.iloc[-1].fullname)
         for post in res2.json()['data']['children']:
-            if(post['data']['is_original_content']):
+            if(post['data']['is_original_content'] and post['data']['approved']):
                 df = df.append({
                     'fullname': 't3_'+post['data']['id'],
                     'title': post['data']['title'],
                     'author': post['data']['author'],
-                    'date': datetime.fromtimestamp(int(post['data']['created_utc'])).date().strftime("%b") + " " + datetime.fromtimestamp(int(post['data']['created_utc'])).date().strftime("%d") + ", 23",
+                    'date': datetime.fromtimestamp(int(post['data']['created_utc'])).date().strftime("%d") + " de " + datetime.fromtimestamp(int(post['data']['created_utc'])).date().strftime("%B"),
                     'timestamp': int(post['data']['created_utc']),
                     'preview': post['data']['thumbnail']
                 }, ignore_index=True)

@@ -54,7 +54,11 @@ function createPostElement(post) {
 
   const detailsElement = document.createElement('p');
   detailsElement.classList.add('post-details');
-  detailsElement.textContent = `Posted by ${post.author} | ${post.date}`;
+  if (post.days > 0) {
+    detailsElement.textContent = `Posted by ${post.author} | há ${post.days} dias`;
+  }else{
+    detailsElement.textContent = `Posted by ${post.author} | hoje`;
+  }
   postContentElement.appendChild(detailsElement);
 
   postElement.appendChild(postContentElement);
@@ -63,7 +67,7 @@ function createPostElement(post) {
 
 function displayAppVersion(version) {
   const versionElement = document.createElement('p');
-  versionElement.textContent = `Version: ${version}`;
+  versionElement.textContent = 'Feito por phozir - 2023 | ' + `Version: ${version}`;
   footer.appendChild(versionElement);
 }
 

@@ -55,7 +55,8 @@ for post in res.json()['data']['children']:
             'fullname': 't3_'+post['data']['id'],
             'title': post['data']['title'],
             'author': post['data']['author'],
-            'date': datetime.fromtimestamp(int(post['data']['created_utc'])).date().strftime("%d") + " de " + datetime.fromtimestamp(int(post['data']['created_utc'])).date().strftime("%B"),
+            'date': datetime.fromtimestamp(int(post['data']['created_utc'])).date(),
+            'days': (datetime.now().date() - datetime.fromtimestamp(int(post['data']['created_utc'])).date()).days(),
             'timestamp': int(post['data']['created_utc']),
             'preview': post['data']['thumbnail']
         }, ignore_index=True)
@@ -71,7 +72,8 @@ while(not week):
                     'fullname': 't3_'+post['data']['id'],
                     'title': post['data']['title'],
                     'author': post['data']['author'],
-                    'date': datetime.fromtimestamp(int(post['data']['created_utc'])).date().strftime("%d") + " de " + datetime.fromtimestamp(int(post['data']['created_utc'])).date().strftime("%B"),
+                    'date': datetime.fromtimestamp(int(post['data']['created_utc'])).date(),
+                    'days': (datetime.now().date() - datetime.fromtimestamp(int(post['data']['created_utc'])).date()).days(),
                     'timestamp': int(post['data']['created_utc']),
                     'preview': post['data']['thumbnail']
                 }, ignore_index=True)

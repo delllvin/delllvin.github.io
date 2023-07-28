@@ -122,7 +122,7 @@ def get_posts():
 
 @app.route('/version')
 def display_version():
-    return '0.1'
+    return '0.7'
 
 if __name__ == '__main__':
     app.run(debug=True)

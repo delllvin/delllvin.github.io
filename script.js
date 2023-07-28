@@ -25,8 +25,11 @@ async function fetchAppVersion() {
 }
 
 function displayPosts(posts) {
-  posts.forEach(post => {
+  posts.forEach((post, index) => {
     const postElement = createPostElement(post);
+    if (index === 0) {
+      postElement.classList.add('first-post');
+    }
     postsContainer.appendChild(postElement);
   });
 }
@@ -55,9 +58,9 @@ function createPostElement(post) {
   const detailsElement = document.createElement('p');
   detailsElement.classList.add('post-details');
   if (post.days > 0) {
-    detailsElement.textContent = `Posted by ${post.author} | há ${post.days} dias`;
+    detailsElement.textContent = `Postado por ${post.author} | há ${post.days} dias`;
   }else{
-    detailsElement.textContent = `Posted by ${post.author} | hoje`;
+    detailsElement.textContent = `Postado por ${post.author} | hoje`;
   }
   postContentElement.appendChild(detailsElement);
 

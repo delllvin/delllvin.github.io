@@ -45,9 +45,10 @@ function createPostElement(post) {
 
   const postContentElement = document.createElement('div');
   postContentElement.classList.add('post-content');
-  const titleElement = document.createElement('h2');
+  const titleElement = document.createElement('a');
   titleElement.classList.add('post-title');
   titleElement.textContent = post.title;
+  titleElement.href = post.url;
   postContentElement.appendChild(titleElement);
 
   const bodyElement = document.createElement('p');
@@ -58,9 +59,9 @@ function createPostElement(post) {
   const detailsElement = document.createElement('p');
   detailsElement.classList.add('post-details');
   if (post.days > 0) {
-    detailsElement.textContent = `Postado por ${post.author} | há ${post.days} dias`;
+    detailsElement.textContent = `✅ Postado por ${post.author} | 🕐 há ${post.days} dias`;
   }else{
-    detailsElement.textContent = `Postado por ${post.author} | hoje`;
+    detailsElement.textContent = `✅ Postado por ${post.author} | 🕐 hoje`;
   }
   postContentElement.appendChild(detailsElement);
 

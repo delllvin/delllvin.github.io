@@ -53,6 +53,7 @@ for post in res.json()['data']['children']:
     if(post['data']['is_original_content'] and post['data']['approved']):
         df = df.append({
             'fullname': 't3_'+post['data']['id'],
+            'link': post['data']['url'],
             'title': post['data']['title'],
             'author': post['data']['author'],
             'date': datetime.fromtimestamp(int(post['data']['created_utc'])).date(),
@@ -70,6 +71,7 @@ while(not week):
             if(post['data']['is_original_content'] and post['data']['approved']):
                 df = df.append({
                     'fullname': 't3_'+post['data']['id'],
+                    'link': post['data']['url'],
                     'title': post['data']['title'],
                     'author': post['data']['author'],
                     'date': datetime.fromtimestamp(int(post['data']['created_utc'])).date(),

@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-CLIENT_ID = '-zND6yVHuxo52fkmC2p_0w'
-SECRET_KEY = 'k9d4z-wdO97mmdZOFxzdHuf-Kwjvnw'
-
 import requests
 from requests.auth import HTTPBasicAuth
 import pandas as pd
@@ -12,13 +9,20 @@ from flask import Flask, jsonify
 from flask_cors import CORS
 import csv
 import json
+import os
+
+CLIENT_ID = os.getenv('CLIENT_ID')
+SECRET_KEY = os.getenv('SECRET_KEY')
+USERNAME = os.getenv('username')
+PASSWORD = os.getenv('password')
+
 
 auth = HTTPBasicAuth(CLIENT_ID, SECRET_KEY)
 
 data = {
     'grant_type': 'password',
-    'username': 'ph0zir',
-    'password': 'Jfzha,)@:2G3&5a'
+    'username': USERNAME,
+    'password': PASSWORD
 }
 
 

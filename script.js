@@ -54,7 +54,7 @@ function createPostElement(post) {
 
   const detailsElement = document.createElement('p');
   detailsElement.classList.add('post-details');
-  detailsElement.textContent = `Posted by ${post.author} | ${post.time_ago} | ${post.comments_count} comments | ${post.upvotes} upvotes`;
+  detailsElement.textContent = `Posted by ${post.author} | ${post.date}`;
   postContentElement.appendChild(detailsElement);
 
   postElement.appendChild(postContentElement);
@@ -63,7 +63,7 @@ function createPostElement(post) {
 
 function displayAppVersion(version) {
   const versionElement = document.createElement('p');
-  versionElement.textContent = `App Version: ${version}`;
+  versionElement.textContent = `Version: ${version}`;
   footer.appendChild(versionElement);
 }
 

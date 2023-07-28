@@ -55,7 +55,7 @@ for post in res.json()['data']['children']:
             'fullname': 't3_'+post['data']['id'],
             'title': post['data']['title'],
             'author': post['data']['author'],
-            'date': datetime.fromtimestamp(int(post['data']['created_utc'])),
+            'date': datetime.fromtimestamp(int(post['data']['created_utc'])).date().strftime("%b") + " " + datetime.fromtimestamp(int(post['data']['created_utc'])).date().strftime("%d") + ", 23",
             'timestamp': int(post['data']['created_utc']),
             'preview': post['data']['thumbnail']
         }, ignore_index=True)
@@ -71,7 +71,7 @@ while(not week):
                     'fullname': 't3_'+post['data']['id'],
                     'title': post['data']['title'],
                     'author': post['data']['author'],
-                    'date': datetime.fromtimestamp(int(post['data']['created_utc'])),
+                    'date': datetime.fromtimestamp(int(post['data']['created_utc'])).date().strftime("%b") + " " + datetime.fromtimestamp(int(post['data']['created_utc'])).date().strftime("%d") + ", 23",
                     'timestamp': int(post['data']['created_utc']),
                     'preview': post['data']['thumbnail']
                 }, ignore_index=True)
